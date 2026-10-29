@@ -1,14 +1,13 @@
 package org.example;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 public class Hand {
-    List<Card> listOfCards;
+    List<Card> listOfScores;
 
-    public Hand(List<Card> listOfCards) {
-        this.listOfCards = listOfCards.stream()
+    public Hand(List<Card> listOfCard) {
+        this.listOfScores = listOfCard.stream()
                 .sorted(Comparator.comparingInt(Card::getValue).reversed())
                 .toList();
 
@@ -20,12 +19,12 @@ public class Hand {
         if(isStraight()) return 40;
         if(isBrelan()) return 30;
 
-        return listOfCards.getFirst().weight;
+        return listOfScores.getFirst().getValue();
     }
 
     private boolean isBrelan(){
-        for (int i = 0; i <= listOfCards.size() - 3; i++) {
-            if (listOfCards.get(i) == listOfCards.get(i + 2)) {
+        for (int i = 0; i <= listOfScores.size() - 3; i++) {
+            if (listOfScores.get(i) == listOfScores.get(i + 2)) {
                 return true;
             }
         }
@@ -33,8 +32,8 @@ public class Hand {
     }
 
     private boolean isStraight(){
-        for (int i = 0; i < listOfCards.size() - 1; i++) {
-            if (listOfCards.get(i).getValue() != listOfCards.get(i + 1).getValue() + 1) {
+        for (int i = 0; i < listOfScores.size() - 1; i++) {
+            if (listOfScores.get(i).getValue() != listOfScores.get(i + 1).getValue() + 1) {
                 return false;
             }
         }
