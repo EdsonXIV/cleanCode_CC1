@@ -56,6 +56,6 @@ public class PokerHandTest {
     @Test
     void straightShouldReturn40(){
         Hand hand3 = new Hand(List.of(card2,card3,card4,card5,card6));
-        assertEquals(40, hand2.getHighestScore());
+        assertEquals(40, hand3.getHighestScore());
     }
 }
