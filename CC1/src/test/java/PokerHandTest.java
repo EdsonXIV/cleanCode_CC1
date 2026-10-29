@@ -52,4 +52,10 @@ public class PokerHandTest {
     void shouldReturn30(){
         assertEquals(30, hand2.getHighestScore());
     }
+
+    @Test
+    void shouldReturn40(){
+        Hand hand3 = new Hand(List.of(card2,card3,card4,card5,card6));
+        assertEquals(40, hand2.getHighestScore());
+    }
 }
