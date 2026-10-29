@@ -62,7 +62,7 @@ public class PokerHandTest {
     void brelanShouldReturn30(){
         Card card1 = new Card(Color.ACE,score2);
         Card card2 = new Card(Color.ACE,score2);
-        Card card3 = new Card(Color.ACE,score2);
+        Card card3 = new Card(Color.HEART,score2);
         Card card4 = new Card(Color.ACE,score9);
         Card card5 = new Card(Color.ACE,score4);
         hand2 = new Hand(List.of(card1, card2, card3, card4, card5));
@@ -71,7 +71,7 @@ public class PokerHandTest {
 
     @Test
     void straightShouldReturn40(){
-        Card card1 = new Card(Color.ACE,score2);
+        Card card1 = new Card(Color.HEART,score2);
         Card card2 = new Card(Color.ACE,score3);
         Card card3 = new Card(Color.ACE,score4);
         Card card4 = new Card(Color.ACE,score5);
@@ -82,7 +82,12 @@ public class PokerHandTest {
 
     @Test
     void colorShouldReturn40(){
-        Hand hand3 = new Hand(List.of(score2, score3, score4, score5, score6));
-        assertEquals(40, hand3.getHighestScore());
+        Card card1 = new Card(Color.ACE,score2);
+        Card card2 = new Card(Color.ACE,score3);
+        Card card3 = new Card(Color.ACE,score4);
+        Card card4 = new Card(Color.ACE,score5);
+        Card card5 = new Card(Color.ACE,score6);
+        Hand hand3 = new Hand(List.of(card1, card2, card3, card4, card5));
+        assertEquals(45, hand3.getHighestScore());
     }
 }

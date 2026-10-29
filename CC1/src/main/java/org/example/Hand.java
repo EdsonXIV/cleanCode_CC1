@@ -8,7 +8,7 @@ public class Hand {
 
     public Hand(List<Card> listOfCard) {
         this.listOfScores = listOfCard.stream()
-                .sorted(Comparator.comparingInt(Card::getValue).reversed())
+                .sorted(Comparator.comparingInt(Card::getWeight).reversed())
                 .toList();
 
     }
@@ -16,10 +16,11 @@ public class Hand {
 
     public int getHighestScore() {
 
+        if(isColor()) return 45;
         if(isStraight()) return 40;
         if(isBrelan()) return 30;
 
-        return listOfScores.getFirst().getValue();
+        return listOfScores.getFirst().getWeight();
     }
 
     private boolean isBrelan(){
@@ -33,7 +34,16 @@ public class Hand {
 
     private boolean isStraight(){
         for (int i = 0; i < listOfScores.size() - 1; i++) {
-            if (listOfScores.get(i).getValue() != listOfScores.get(i + 1).getValue() + 1) {
+            if (listOfScores.get(i).getWeight() != listOfScores.get(i + 1).getWeight() + 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isColor(){
+        for (int i = 0; i < listOfScores.size() - 1; i++) {
+            if (listOfScores.get(i).getColor().compareTo(listOfScores.get(i + 1).getColor()) != 0) {
                 return false;
             }
         }

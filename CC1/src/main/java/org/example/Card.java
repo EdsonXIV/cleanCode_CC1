@@ -1,7 +1,5 @@
 package org.example;
 
-import java.awt.*;
-
 public class Card {
     Color color;
     Score score;
@@ -12,7 +10,11 @@ public class Card {
         this.score = score;
     }
 
-    public int getValue(){
+    public int getWeight(){
         return score.getValue();
     }
+    public Color getColor(){
+        return color;
+    }
+
 }
