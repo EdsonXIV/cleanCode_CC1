@@ -15,10 +15,14 @@ public enum Card {
     QUEEN(12),
     KING(13);
 
-    public int weight;
+    int weight;
 
     Card(int weight) {
         this.weight = weight;
+    }
+
+    public int getValue(){
+        return weight;
     }
 
 }
