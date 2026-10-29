@@ -14,10 +14,21 @@ public class Hand {
 
 
     public int getHighestScore() {
+        List<Card>sorted = listOfCards.stream()
+                .sorted(Comparator.comparingInt(Card::getValue).reversed())
+                .toList();
+
+        for (int i = 0; i <= sorted.size() - 3; i++) {
+            if (sorted.get(i) == sorted.get(i + 2)) {
+                return 30;
+            }
+        }
+
         Card max = listOfCards.stream()
                 .max(Comparator.comparingInt(Card::getValue))
                 .orElseThrow();
         return max.weight;
     }
+
 
 }

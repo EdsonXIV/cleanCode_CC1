@@ -1,21 +1,28 @@
+import org.example.Card;
+import org.example.Hand;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class PokerHandTest {
-    Card card2;
-    Card card3;
-    Card card4;
-    Card card5;
-    Card card6;
-    Card card7;
-    Card card8;
-    Card card9;
-    Card card10;
-    Card card11;
-    Card card12;
-    Card card13;
-    Card card14;
-    Hand hand1;
+    static Card card2;
+    static Card card3;
+    static Card card4;
+    static Card card5;
+    static Card card6;
+    static Card card7;
+    static Card card8;
+    static Card card9;
+    static Card card10;
+    static Card card11;
+    static Card card12;
+    static Card card13;
+    static Card card14;
+    static Hand hand1;
+    static Hand hand2;
 
     @BeforeAll
     static void setup(){
@@ -33,10 +40,16 @@ public class PokerHandTest {
         card13 = Card.KING;
         card14 = Card.AS;
 
-        hand1 = Hand(card2,card3,card4,card5,card6);
+        hand1 = new Hand(List.of(card2,card4,card7,card9,card6));
+        hand2 = new Hand(List.of(card2,card2,card2,card5,card6));
     }
     @Test
-    void shouldReturn6(){
-        assert(hand1.getHighestScore()).equals(10);
+    void shouldReturn9(){
+        assertEquals(9, hand1.getHighestScore());
+    }
+
+    @Test
+    void shouldReturn30(){
+        assertEquals(30, hand2.getHighestScore());
     }
 }
